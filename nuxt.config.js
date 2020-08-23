@@ -1,5 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
-const {API_KEY, TAG_MANAGER_ID} = process.env
+const {API_KEY, GTM_ID} = process.env
 
 export default {
   privateRuntimeConfig: {
@@ -97,7 +97,7 @@ export default {
   build: {
   },
   gtm: {
-    id: TAG_MANAGER_ID,
+    id: GTM_ID,
     pageTracking: true,
   }
 
