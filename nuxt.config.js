@@ -152,13 +152,18 @@ export default {
   generate: {
     subFolders: false,
     routes: async function () {
-      const menus = await axios.$get('/menu')
-      const sections = await axios.$get('/test')
+      const menus = await axios.get('/menu')
+      const sections = await axios.get('/test')
       var routes = ['/']
       var pages = null
-      menus.contents.forEach(x => {
-        pages = sections.contents.map(y => {
-          return `/${x}/${y}`
+      menus.data.contents.forEach(x => {
+        pages = sections.data.contents.filter(y => {
+          if (y.menu) {
+            return y.menu.id === x.id
+          }
+        })
+        pages = pages.map(z => {
+          return `/${x}/${z}`
         })
         routes = [
           ...routes,
