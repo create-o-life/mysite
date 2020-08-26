@@ -9,24 +9,41 @@ const {
   COLOR_HEADER_BG,
   COLOR_HEADER_TITLE,
   COLOR_HEADER_MENU,
-  COLOR_FOOTER_BG,
+  COLOR_FOOTER_BG, 
   COLOR_FOOTER_MENU,
   COLOR_FOOTER_COPYRIGHT,
-  COLOR_FOOTER_COPYRIGHT_BG
+  COLOR_FOOTER_COPYRIGHT_BG,
+  COLOR_LIST_BG,
+  COLOR_LIST_TITLE,
+  COLOR_LIST_DATE,
+  COLOR_LIST_OVERVIEW,
+  COLOR_LIST_CHIP,
+  COLOR_BTN,
+  COLOR_BREAD
 } = process.env
 
 export default {
   publicRuntimeConfig: {
+    gtm: {
+      id: GTM_ID
+    },
     LOGO_IMG_URL,
     HEADER_TITLE,
     FOOTER_COPYRIGHT,
     COLOR_HEADER_BG,
     COLOR_HEADER_TITLE,
     COLOR_HEADER_MENU,
-    COLOR_FOOTER_BG,
+    COLOR_FOOTER_BG, 
     COLOR_FOOTER_MENU,
     COLOR_FOOTER_COPYRIGHT,
-    COLOR_FOOTER_COPYRIGHT_BG
+    COLOR_FOOTER_COPYRIGHT_BG,
+    COLOR_LIST_BG,
+    COLOR_LIST_TITLE,
+    COLOR_LIST_DATE,
+    COLOR_LIST_OVERVIEW,
+    COLOR_LIST_CHIP,
+    COLOR_BTN,
+    COLOR_BREAD
   },
   privateRuntimeConfig: {
     API_KEY,
@@ -130,8 +147,5 @@ export default {
   gtm: {
     id: GTM_ID,
     pageTracking: true,
-  },
-  generate: {
-    exclude: [/^(?=.*undefined).*$/]
   }
 }
