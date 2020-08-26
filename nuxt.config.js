@@ -152,8 +152,12 @@ export default {
   generate: {
     subFolders: false,
     routes: async function () {
-      const menus = await axios.get('/menu')
-      const sections = await axios.get('/test')
+      const menus = await axios.get(`https://${SERVICE_ID}.microcms.io/api/v1/menu`, {
+                headers: { 'X-API-KEY': API_KEY }
+            })
+      const sections = await axios.get(`https://${SERVICE_ID}.microcms.io/api/v1/test`, {
+                headers: { 'X-API-KEY': API_KEY }
+            })
       var routes = ['/']
       var pages = null
       menus.data.contents.forEach(x => {
