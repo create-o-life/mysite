@@ -1,4 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
+const axios = require("axios")
 const {
   API_KEY,
   SERVICE_ID,
@@ -147,5 +148,25 @@ export default {
   gtm: {
     id: GTM_ID,
     pageTracking: true,
+  },
+  generate: {
+    subFolders: false,
+    routes: async function () {
+      const menus = await axios.$get('/menu')
+      const sections = await axios.$get('/test')
+      var routes = ['/']
+      var pages = null
+      menus.contents.forEach(x => {
+        pages = sections.contents.map(y => {
+          return `/${x}/${y}`
+        })
+        routes = [
+          ...routes,
+          `/${x}`,
+          pages
+        ]
+      })
+      return routes
+    }
   }
 }
