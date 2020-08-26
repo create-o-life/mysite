@@ -130,6 +130,8 @@ export default {
   gtm: {
     id: GTM_ID,
     pageTracking: true,
+  },
+  generate: {
+    exclude: [/^(?=.*undefined).*$/]
   }
-
 }
