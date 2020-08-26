@@ -5,10 +5,11 @@
   </template>
   
   <v-container
-    class="pb-4 pb-sm-6"
+    class="pb-4 pb-sm-6 d-flex align-center"
+    style="height:100%"
   >
-    <v-row justify="center">
-      <template v-if="sectionType == null">
+    <v-row justify="center" align="center">
+      <template v-if="sectionType == null || sectionType === 'アイキャッチ'">
       <template v-for="item in section.item">
       <Item :item="item" />
       </template>
