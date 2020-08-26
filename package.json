@@ -12,6 +12,7 @@
     "@mdi/font-build": "^1.8.5",
     "@nuxtjs/axios": "^5.12.0",
     "@nuxtjs/pwa": "^3.0.0-beta.20",
+    "dayjs": "^1.8.34",
     "nuxt": "^2.14.0"
   },
   "devDependencies": {

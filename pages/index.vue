@@ -1,17 +1,39 @@
 <template>
 <v-main>
-  テスト
-  {{ res }}
+  <template v-for="sections in homeContents">
+  <List :menu="sections.menu" :sections="sections.contents" />
+  </template>
 </v-main>
 </template>
 
 <script>
+
 export default {
-  async asyncData ({ app }) {
-    const res = await app.$axios.$get(`https://${process.env.SERVICE_ID}.microcms.io/api/v1/layout/layout`, {
-        headers: { 'X-API-KEY': process.env.API_KEY }
+  async asyncData ({ app, $config }) {
+    const menus = await app.$axios.$get('/menu')
+    const sections = await app.$axios.$get('/test')
+    const homeMenus = menus.contents.filter(x => x.display.includes('ホームコンテンツ'))
+    const homeContents = homeMenus.map(x => {
+      return {
+        menu: x,
+        contents: sections.contents.filter(y => y.menu.id === x.id)
+      }
     })
-    return { res }
+    return { menus, homeContents }
+  },
+  mounted () {
+    this.setMenus()
+  },
+  methods: {
+    setMenus () {
+      this.$nuxt.$emit('setMenus', {menus: this.menus})
+    }
+  },
+  head () {
+    return {
+      title: process.env.topTitle,
+      titleTemplate: (process.env.topTemplate != '')? process.env.topTemplate : `${process.env.siteName} - %s`
+    }
   }
 }
 </script>

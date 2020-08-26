@@ -1,9 +1,36 @@
 import colors from 'vuetify/es5/util/colors'
-const {API_KEY, GTM_ID} = process.env
+const {
+  API_KEY,
+  SERVICE_ID,
+  GTM_ID,
+  LOGO_IMG_URL,
+  HEADER_TITLE,
+  FOOTER_COPYRIGHT,
+  COLOR_HEADER_BG,
+  COLOR_HEADER_TITLE,
+  COLOR_HEADER_MENU,
+  COLOR_FOOTER_BG,
+  COLOR_FOOTER_MENU,
+  COLOR_FOOTER_COPYRIGHT,
+  COLOR_FOOTER_COPYRIGHT_BG
+} = process.env
 
 export default {
+  publicRuntimeConfig: {
+    LOGO_IMG_URL,
+    HEADER_TITLE,
+    FOOTER_COPYRIGHT,
+    COLOR_HEADER_BG,
+    COLOR_HEADER_TITLE,
+    COLOR_HEADER_MENU,
+    COLOR_FOOTER_BG,
+    COLOR_FOOTER_MENU,
+    COLOR_FOOTER_COPYRIGHT,
+    COLOR_FOOTER_COPYRIGHT_BG
+  },
   privateRuntimeConfig: {
-    API_KEY
+    API_KEY,
+    SERVICE_ID
   },
   /*
   ** Nuxt rendering mode
@@ -42,6 +69,8 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
+    { src: '@/plugins/axios' },
+    '~plugins/day.js',
   ],
   /*
   ** Auto import components
@@ -67,7 +96,9 @@ export default {
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
-  axios: {},
+  axios: {
+    baseURL: `https://${SERVICE_ID}.microcms.io/api/v1`
+  },
   /*
   ** vuetify module configuration
   ** https://github.com/nuxt-community/vuetify-module
