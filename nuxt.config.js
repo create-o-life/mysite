@@ -163,11 +163,11 @@ export default {
           }
         })
         pages = pages.map(z => {
-          return `/${x}/${z}`
+          return `/${x.id}/${z.id}`
         })
         routes = [
           ...routes,
-          `/${x}`,
+          `/${x.id}`,
           ...pages
         ]
       })
