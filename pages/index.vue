@@ -16,7 +16,11 @@ export default {
     const homeContents = homeMenus.map(x => {
       return {
         menu: x,
-        contents: sections.contents.filter(y => y.menu.id === x.id)
+        contents: sections.contents.filter(y => {
+          if (y.menu) {
+            return y.menu.id === x.id
+          }
+        })
       }
     })
     return { menus, homeContents }
