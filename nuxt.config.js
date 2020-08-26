@@ -168,7 +168,7 @@ export default {
         routes = [
           ...routes,
           `/${x}`,
-          pages
+          ...pages
         ]
       })
       return routes
