@@ -56,6 +56,7 @@
         <v-btn
           v-bind="attrs"
           v-on="on"
+          aria-label="menu"
           icon
         >
           <v-icon large>
