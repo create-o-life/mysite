@@ -1,6 +1,6 @@
 <template>
 <div
-  :style="`background:url('${bgImg}');background-repeat: no-repeat;background-size:cover;background-position:center;`"
+  :style="(bgImg)? `background:url('${bgImg}');background-repeat: no-repeat;background-size:cover;background-position:center;` : undefined"
 >
   <template v-if="menu.bread && $route.params.menu">
   <Bread :menu="menu" />

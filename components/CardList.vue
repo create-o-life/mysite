@@ -7,7 +7,7 @@
   tile
   nuxt
 >
-  <v-img :src="thumbnail" class="align-end"></v-img>
+  <v-img :src="(thumbnail)? thumbnail : undefined" class="align-end"></v-img>
   <v-card-title
     :style="`color: ${color.title};`"
     class="font-weight-bold"

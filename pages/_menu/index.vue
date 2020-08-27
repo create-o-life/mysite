@@ -19,10 +19,10 @@ export default {
   computed: {
     style () {
       if (this.$vuetify.breakpoint.mdAndUp) {
-        return `margin-top:64px;background-color:${process.env.colorSiteBg};`
+        return `margin-top:64px;`
       }
       else {
-        return `margin-top:56px;background-color:${process.env.colorSiteBg};`
+        return `margin-top:56px;`
       }
     }
   },

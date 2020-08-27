@@ -4,6 +4,11 @@ const {
   API_KEY,
   SERVICE_ID,
   GTM_ID,
+  SITE_TITLE,
+  SITE_URL, 
+  SITE_DESC,
+  TOP_TITLE,
+  TOP_TEMPLATE,
   LOGO_IMG_URL,
   HEADER_TITLE,
   FOOTER_COPYRIGHT,
@@ -24,10 +29,17 @@ const {
 } = process.env
 
 export default {
+  privateRuntimeConfig: {
+    API_KEY,
+    SERVICE_ID
+  },
   publicRuntimeConfig: {
     gtm: {
       id: GTM_ID
     },
+    SITE_TITLE,
+    TOP_TITLE,
+    TOP_TEMPLATE,
     LOGO_IMG_URL,
     HEADER_TITLE,
     FOOTER_COPYRIGHT,
@@ -46,10 +58,6 @@ export default {
     COLOR_BTN,
     COLOR_BREAD
   },
-  privateRuntimeConfig: {
-    API_KEY,
-    SERVICE_ID
-  },
   /*
   ** Nuxt rendering mode
   ** See https://nuxtjs.org/api/configuration-mode
@@ -65,15 +73,36 @@ export default {
   ** See https://nuxtjs.org/api/configuration-head
   */
   head: {
-    titleTemplate: '%s - ' + process.env.npm_package_name,
-    title: process.env.npm_package_name || '',
+    htmlAttrs: {
+      prefix: 'og: http://ogp.me/ns#',
+      lang: 'ja'
+    },
+    titleTemplate: `%s - ${SITE_TITLE}`,
     meta: [
+      // 設定関連
       { charset: 'utf-8' },
+      { 'http-equiv': 'x-ua-compatible', content: 'ie=edge' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      { hid: 'description', name: 'description', content: SITE_DESC },
+      
+      // ogp関連
+      { hid: 'og:site_name', property: 'og:site_name', content: SITE_TITLE },
+      { hid: 'og:type', property: 'og:type', content: 'website' },
+      { hid: 'og:url', property: 'og:url', content: SITE_URL },
+      { hid: 'og:title', property: 'og:title', content: SITE_TITLE },
+      { hid: 'og:description', property: 'og:description', content: SITE_DESC },
+      { hid: 'og:image', property: 'og:image', content: `${SITE_URL}ogp/home.jpg` },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      
+      // pwa iOS
+      { name: 'apple-mobile-web-app-capable', content: 'yes' },
+      { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      
+      // apple touch icon
+      { rel: 'apple-touch-icon', type: 'image/png', href: '/icon.png' }
     ]
   },
   /*
@@ -109,6 +138,7 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
+    '@nuxtjs/sitemap'
   ],
   /*
   ** Axios module configuration
@@ -148,6 +178,11 @@ export default {
   gtm: {
     id: GTM_ID,
     pageTracking: true,
+  },
+  sitemap: {
+    path: '/sitemap.xml',
+    hostname: SITE_URL,
+    gzip: true
   },
   generate: {
     crawler: false,

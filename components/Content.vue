@@ -2,7 +2,7 @@
 <div
   v-html="item.content"
   :class="$style[imgSize]"
-  :style="`background:url('${bgImg}');background-repeat: no-repeat;background-size:cover;background-position:center;background-color: ${color.bg};height:100%`"
+  :style="(bgImg)? `background:url('${bgImg}');background-repeat: no-repeat;background-size:cover;background-position:center;height:100%` : `background-color: ${color.bg};height:100%`"
 ></div>
 </template>
 

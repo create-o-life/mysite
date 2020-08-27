@@ -35,8 +35,8 @@ export default {
   },
   head () {
     return {
-      title: process.env.topTitle,
-      titleTemplate: (process.env.topTemplate != '')? process.env.topTemplate : `${process.env.siteName} - %s`
+      title: this.$config.TOP_TITLE,
+      titleTemplate: (this.$config.TOP_TEMPLATE != '')? this.$config.TOP_TEMPLATE : `${this.$config.SITE_TITLE} - %s`
     }
   }
 }

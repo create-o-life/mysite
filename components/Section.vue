@@ -1,5 +1,7 @@
 <template>
-<div :style="`background:url('${bgImg}');background-repeat: no-repeat;background-size:cover;background-position:center;background-color: ${color.bg};height:${height};`">
+<div
+  :style="(bgImg)? `background:url('${bgImg}');background-repeat: no-repeat;background-size:cover;background-position:center;height:${height};` : `background-color: ${color.bg};height:${height}`"
+>
   <template v-if="bread && $route.params.page">
   <Bread :menu="menu" :section="section" />
   </template>
