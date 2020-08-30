@@ -10,6 +10,7 @@
       class="px-0"
       aria-label="to-top"
       @click="$router.push('/')"
+      style="text-transform: none"
       nuxt
       text
     >
@@ -103,16 +104,6 @@ export default {
       bg: this.$config.COLOR_HEADER_BG,
       title: this.$config.COLOR_HEADER_TITLE,
       menu: this.$config.COLOR_HEADER_MENU
-    }
-  },
-  methods: {
-    check (x, y) {
-      if (x) {
-        return x
-      }
-      else {
-        return y
-      }
     }
   }
 }
