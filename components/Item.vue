@@ -14,23 +14,11 @@
         <template v-if="item.content">
         <Content :item="item" :class="$style.item" />
         </template>
-        
-        <template v-if="item.btnLabel && item.btnLink">
-        <div class="d-flex justify-center">
-          <Btn :item="item" />
-        </div>
-        </template>
       </v-card>
       </template>
       <template v-else>
         <template v-if="item.content">
         <Content :item="item" />
-        </template>
-        
-        <template v-if="item.btnLabel && item.btnLink">
-        <div class="d-flex justify-center">
-          <Btn :item="item" />
-        </div>
         </template>
       </template>
     </v-col>

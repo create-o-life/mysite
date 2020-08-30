@@ -1,9 +1,15 @@
 <template>
 <div
-  v-html="item.content"
   :class="$style[imgSize]"
-  :style="(bgImg)? `background:url('${bgImg}');background-repeat: no-repeat;background-size:cover;background-position:center;height:100%` : `background-color: ${color.bg};height:100%`"
-></div>
+  :style="(bgImg)? `background:url('${bgImg}');background-repeat: no-repeat;background-size:cover;background-position:center;height:100%;` : `background-color: ${color.bg};height:100%;`"
+>
+  <div v-html="item.content"></div>
+  <template v-if="item.btnLabel && item.btnLink">
+  <div class="d-flex justify-center">
+    <Btn :item="item" />
+  </div>
+  </template>
+</div>
 </template>
 
 <script>
