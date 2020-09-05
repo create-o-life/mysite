@@ -191,7 +191,7 @@ export default {
       const menus = await axios.get(`https://${SERVICE_ID}.microcms.io/api/v1/menu`, {
         headers: { 'X-API-KEY': API_KEY }
       })
-      const sections = await axios.get(`https://${SERVICE_ID}.microcms.io/api/v1/test`, {
+      const sections = await axios.get(`https://${SERVICE_ID}.microcms.io/api/v1/test?limit=100`, {
         headers: { 'X-API-KEY': API_KEY }
       })
       var routes = ['/']

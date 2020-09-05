@@ -11,7 +11,7 @@
 export default {
   async asyncData ({ app, $config }) {
     const menus = await app.$axios.$get('/menu')
-    const sections = await app.$axios.$get('/test')
+    const sections = await app.$axios.$get('/test?limit=100')
     const homeMenus = menus.contents.filter(x => x.display.includes('ホームコンテンツ'))
     const homeContents = homeMenus.map(x => {
       return {
