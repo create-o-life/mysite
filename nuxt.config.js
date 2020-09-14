@@ -2,7 +2,9 @@ import colors from 'vuetify/es5/util/colors'
 const axios = require("axios")
 const {
   API_KEY,
+  DRAFT_API_KEY,
   SERVICE_ID,
+  DRAFT_SERVICE_ID,
   GTM_ID,
   SITE_TITLE,
   SITE_URL, 
@@ -37,6 +39,8 @@ export default {
     gtm: {
       id: GTM_ID
     },
+    DRAFT_API_KEY,
+    DRAFT_SERVICE_ID,
     SITE_TITLE,
     TOP_TITLE,
     TOP_TEMPLATE,
@@ -194,7 +198,11 @@ export default {
       const sections = await axios.get(`https://${SERVICE_ID}.microcms.io/api/v1/test?limit=100`, {
         headers: { 'X-API-KEY': API_KEY }
       })
-      var routes = ['/']
+      var routes = [
+        '/',
+        'draft/menu',
+        'draft/page'
+      ]
       var pages = null
       menus.data.contents.forEach(x => {
         pages = sections.data.contents.filter(y => {
